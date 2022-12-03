@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SmsData } from '../shared/interfaces/sms-data.interface';
 
 @Component({
   selector: 'app-chart',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent {
-
+  protected data: SmsData[] = [];
 }

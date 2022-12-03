@@ -1,4 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+// @import '@angular/material/theming';
+@include mat.core();
+
+$dark-primary: mat.define-palette(mat.$indigo-palette, 500);
+$dark-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$dark-theme: mat.define-dark-theme($dark-primary, $dark-accent);
+@include mat.all-component-themes($dark-theme);
+// @include mat.angular-material-theme($primary-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+.disable-day {
+  .owl-dt-calendar-control-content>.owl-dt-control-period-button {
+    pointer-events: none;
+    .owl-dt-control-button-arrow {
+      display: none;
+    }
+  }
+}

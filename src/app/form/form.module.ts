@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormComponent } from './components/form/form.component';
 
+import { FormRoutingModule } from './form-routing.module';
+import { FormComponent } from './form.component';
+import { InputDateComponent } from '../shared/components/input-date/input-date.component';
 
 
 @NgModule({
@@ -9,7 +11,9 @@ import { FormComponent } from './components/form/form.component';
     FormComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormRoutingModule,
+    InputDateComponent
   ]
 })
 export class FormModule { }

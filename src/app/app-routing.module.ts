@@ -1,18 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChartComponent } from './chart/components/chart/chart.component';
-import { FormComponent } from './form/components/form/form.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/form' },
-  {
-    path: 'chart',
-    component: ChartComponent,
-  },
-  {
-    path: 'form',
-    component: FormComponent,
-  },
+  { path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
+  { path: 'chart', loadChildren: () => import('./chart/chart.module').then(m => m.ChartModule) },
 ];
 
 @NgModule({
