@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SmsData } from '../shared/interfaces/sms-data.interface';
 import { ChartService } from '../shared/services/chart.service';
@@ -11,8 +11,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class FormComponent {
   protected formGroup: FormGroup;
+  protected showForm: boolean = true;
 
-  constructor(private chartService: ChartService, private snackBar: MatSnackBar) {
+  constructor(
+    private chartService: ChartService,
+    private snackBar: MatSnackBar,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {
     this.formGroup = new FormGroup({
       date: new FormControl(null, [Validators.required]),
       count: new FormControl(null, [Validators.required, Validators.min(0), Validators.pattern(/^\d+$/)]),
@@ -26,8 +31,11 @@ export class FormComponent {
       count: +this.formGroup.value['count']
     };
 
+    this.showForm = false;
     this.formGroup.reset();
     this.formGroup.markAsUntouched();
+    this.changeDetectorRef.detectChanges();
+    this.showForm = true;
     this.chartService.setData(addSmsData);
     this.snackBar.open('Dodano dane', undefined, {
       duration: 3000

@@ -1,5 +1,5 @@
 <div class="px-0 px-sm-3 py-3 text-center">
-  <form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <form *ngIf="showForm" [formGroup]="formGroup" (ngSubmit)="submit()">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -7,15 +7,18 @@
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
+
         <div class="my-3">
           <app-input-date placeholder="Data" formControlName="date"></app-input-date>
         </div>
+
         <div class="my-3">
           <mat-form-field>
             <input matInput placeholder="Ilość smsów" formControlName="count">
             <mat-error *ngIf="formGroup.get('count')?.invalid">{{ formGroup.getError('error', 'count') }}</mat-error>
           </mat-form-field>
         </div>
+
       </mat-card-content>
       <mat-card-actions class="justify-content-end p-3">
         <button mat-flat-button color="primary" [disabled]="!formGroup.valid">Zapisz</button>
@@ -23,4 +26,3 @@
     </mat-card>
   </form>
 </div>
-
