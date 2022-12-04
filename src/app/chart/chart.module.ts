@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 
 import { ChartRoutingModule } from './chart-routing.module';
 import { ChartComponent } from './chart.component';
@@ -12,7 +12,7 @@ import { MatCardModule } from '@angular/material/card';
     ChartComponent
   ],
   imports: [
-    CommonModule,
+    AsyncPipe,
     ChartRoutingModule,
     LineChartComponent,
     MatCardModule

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
+import { NgIf } from '@angular/common';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 import { InputDateComponent } from '../shared/components/input-date/input-date.component';
@@ -16,7 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FormComponent
   ],
   imports: [
-    CommonModule,
+    NgIf,
     FormRoutingModule,
     InputDateComponent,
     ReactiveFormsModule,

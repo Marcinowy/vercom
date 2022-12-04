@@ -11,9 +11,6 @@ export class ChartService {
   private readonly smsDataSubject: BehaviorSubject<SmsData[]> = new BehaviorSubject<SmsData[]>([]);
   readonly smsData$: Observable<SmsData[]> = this.smsDataSubject.asObservable();
 
-  constructor() { }
-
-
   setData(data: SmsData): void {
     const index: number = data.year * 12 + data.month;
     const currentCount: number = this.smsData[index]?.count || 0;
