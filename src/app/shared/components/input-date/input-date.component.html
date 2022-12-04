@@ -1,5 +1,13 @@
 
 <mat-form-field>
-  <input matInput [value]="value" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" [disabled]="disabled">
+  <input
+    #inputField
+    matInput
+    [value]="value"
+    [owlDateTime]="dt1"
+    [owlDateTimeTrigger]="dt1"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    (focus)="inputFocus()">
 </mat-form-field>
 <owl-date-time #dt1 pickerType="calendar" (monthSelected)="monthSelected($event)" panelClass="disable-day"></owl-date-time>

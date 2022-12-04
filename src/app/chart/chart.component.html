@@ -1,1 +1,14 @@
-<app-line-chart></app-line-chart>
+<div class="px-0 px-sm-3 py-3 text-center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h4>Wykres</h4>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="p-4">
+        <app-line-chart [chartConfig]="chartConfig" [values]="chartService.smsDataSubject | async"></app-line-chart>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

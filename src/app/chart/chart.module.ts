@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ChartRoutingModule } from './chart-routing.module';
 import { ChartComponent } from './chart.component';
 import { LineChartComponent } from '../shared/components/line-chart/line-chart.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { LineChartComponent } from '../shared/components/line-chart/line-chart.c
   imports: [
     CommonModule,
     ChartRoutingModule,
-    LineChartComponent
+    LineChartComponent,
+    MatCardModule
   ]
 })
 export class ChartModule { }
