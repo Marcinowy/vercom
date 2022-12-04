@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SmsData } from '../interfaces/sms-data.interface';
 
 @Injectable({
@@ -8,10 +8,11 @@ import { SmsData } from '../interfaces/sms-data.interface';
 export class ChartService {
 
   private readonly smsData: Record<number, SmsData> = {};
+  private readonly smsDataSubject: BehaviorSubject<SmsData[]> = new BehaviorSubject<SmsData[]>([]);
+  readonly smsData$: Observable<SmsData[]> = this.smsDataSubject.asObservable();
 
   constructor() { }
 
-  readonly smsDataSubject: BehaviorSubject<SmsData[]> = new BehaviorSubject<SmsData[]>([]);
 
   setData(data: SmsData): void {
     const index: number = data.year * 12 + data.month;

@@ -10,13 +10,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-  protected formGroup: FormGroup;
   protected showForm: boolean = true;
+  protected readonly formGroup: FormGroup;
 
   constructor(
-    private chartService: ChartService,
-    private snackBar: MatSnackBar,
-    private changeDetectorRef: ChangeDetectorRef
+    private readonly chartService: ChartService,
+    private readonly snackBar: MatSnackBar,
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) {
     this.formGroup = new FormGroup({
       date: new FormControl(null, [Validators.required]),
@@ -36,6 +36,7 @@ export class FormComponent {
     this.formGroup.markAsUntouched();
     this.changeDetectorRef.detectChanges();
     this.showForm = true;
+
     this.chartService.setData(addSmsData);
     this.snackBar.open('Dodano dane', undefined, {
       duration: 3000

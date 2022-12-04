@@ -12,6 +12,10 @@ import { LineChartConfig } from '../../interfaces/line-chart-config.interface';
 })
 export class LineChartComponent<T> {
 
+  protected readonly lineChartData: ChartConfiguration<'line'>['data'] = this.getInitialChartData();
+  protected readonly lineChartOptions: ChartOptions<'line'> = this.getChartOptions();
+  private config?: LineChartConfig<T>;
+
   @Input()
   set values(values: T[] | null) {
     if (!values || !this.config) return;
@@ -30,45 +34,47 @@ export class LineChartComponent<T> {
     this.lineChartData.datasets[0].label = config.label
   }
 
-  protected lineChartData: ChartConfiguration<'line'>['data'] = {
-    labels: [],
-    datasets: [
-      {
-        data: [],
-        label: 'Series A',
-        fill: true,
-        tension: 0.5,
-        borderColor: 'white',
-        backgroundColor: 'rgba(0,255,0,0.3)',
-      }
-    ],
-  };
-
-  protected lineChartOptions: ChartOptions<'line'> = {
-    scales: {
-      x: {
-        ticks: {
-          color: '#ffffff',
-        },
-        grid: {
-          display: false,
-        },
-      },
-      y: {
-        grace: 5,
-        beginAtZero: true,
-        ticks: {
-          color: '#ffffff',
-          precision: 0,
-        },
-        grid: {
-          drawBorder: false,
-          color: 'rgba(255,255,255,.3)'
+  private getInitialChartData(): ChartConfiguration<'line'>['data'] {
+    return {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+          label: '',
+          fill: true,
+          tension: 0.5,
+          borderColor: 'white',
+          backgroundColor: 'rgba(0,255,0,0.3)',
         }
-      },
-    },
-  };
+      ],
+    };
+  }
 
-  private config?: LineChartConfig<T>;
+  private getChartOptions(): ChartOptions<'line'> {
+    return {
+      scales: {
+        x: {
+          ticks: {
+            color: '#ffffff',
+          },
+          grid: {
+            display: false,
+          },
+        },
+        y: {
+          grace: 5,
+          beginAtZero: true,
+          ticks: {
+            color: '#ffffff',
+            precision: 0,
+          },
+          grid: {
+            drawBorder: false,
+            color: 'rgba(255,255,255,.3)'
+          }
+        },
+      },
+    };
+  }
 
 }

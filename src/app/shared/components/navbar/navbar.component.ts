@@ -12,7 +12,7 @@ import { NavbarLink } from '../../interfaces/navbar-link.interface';
 })
 export class NavbarComponent {
 
-  protected links: NavbarLink[] = [
+  protected readonly links: NavbarLink[] = [
     { title: 'Wykres', path: '/chart' },
     { title: 'Dodanie danych', path: '/form' }
   ];

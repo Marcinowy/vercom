@@ -30,7 +30,7 @@ export class InputDateComponent implements ControlValueAccessor {
   protected disabled: boolean = false;
   private datePickerRef?: OwlDateTimeComponent<unknown>;
 
-  @ViewChild('dt1')
+  @ViewChild('datePicker')
   set child(el: OwlDateTimeComponent<unknown>) {
     if (!el) return;
 
